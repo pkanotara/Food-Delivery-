@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { FiShoppingCart, FiUser, FiPackage, FiLogOut } from 'react-icons/fi';
 import { StoreContext } from '../context/StoreContext';
 import './Navbar.css';
 
@@ -52,7 +53,9 @@ const Navbar = ({ setShowLogin }) => {
       <div className="navbar-right">
         <div className="navbar-search-icon">
           <Link to="/cart">
-            <div className="cart-icon">🛒</div>
+            <div className="cart-icon">
+              <FiShoppingCart />
+            </div>
           </Link>
           {getTotalCartAmount() > 0 && <div className="dot"></div>}
         </div>
@@ -60,15 +63,17 @@ const Navbar = ({ setShowLogin }) => {
           <button onClick={() => setShowLogin(true)}>Sign In</button>
         ) : (
           <div className="navbar-profile">
-            <div className="profile-icon">👤</div>
+            <div className="profile-icon">
+              <FiUser />
+            </div>
             <ul className="nav-profile-dropdown">
               <li onClick={() => navigate('/myorders')}>
-                <span>📦</span>
+                <FiPackage />
                 <p>Orders</p>
               </li>
               <hr />
               <li onClick={logout}>
-                <span>🚪</span>
+                <FiLogOut />
                 <p>Logout</p>
               </li>
             </ul>

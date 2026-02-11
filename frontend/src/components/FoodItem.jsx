@@ -1,4 +1,6 @@
 import React, { useContext } from 'react';
+import { FiPlus, FiMinus } from 'react-icons/fi';
+import { AiFillStar } from 'react-icons/ai';
 import { StoreContext } from '../context/StoreContext';
 import './FoodItem.css';
 
@@ -15,16 +17,16 @@ const FoodItem = ({ id, name, price, description, image }) => {
         />
         {!cartItems[id] ? (
           <div className="add" onClick={() => addToCart(id)}>
-            +
+            <FiPlus />
           </div>
         ) : (
           <div className="food-item-counter">
             <div onClick={() => removeFromCart(id)} className="counter-btn">
-              -
+              <FiMinus />
             </div>
             <p>{cartItems[id]}</p>
             <div onClick={() => addToCart(id)} className="counter-btn">
-              +
+              <FiPlus />
             </div>
           </div>
         )}
@@ -32,7 +34,13 @@ const FoodItem = ({ id, name, price, description, image }) => {
       <div className="food-item-info">
         <div className="food-item-name-rating">
           <p>{name}</p>
-          <span className="rating">⭐⭐⭐⭐⭐</span>
+          <div className="rating">
+            <AiFillStar />
+            <AiFillStar />
+            <AiFillStar />
+            <AiFillStar />
+            <AiFillStar />
+          </div>
         </div>
         <p className="food-item-desc">{description}</p>
         <p className="food-item-price">${price}</p>
