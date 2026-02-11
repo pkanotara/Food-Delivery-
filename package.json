@@ -1,0 +1,14 @@
+{
+  "name": "food-delivery-app",
+  "version": "1.0.0",
+  "description": "Full-stack Food Delivery Application using MERN stack",
+  "scripts": {
+    "backend": "cd backend && npm run dev",
+    "frontend": "cd frontend && npm run dev",
+    "admin": "cd admin && npm run dev",
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install && cd ../admin && npm install"
+  },
+  "keywords": ["food", "delivery", "mern", "mongodb", "express", "react", "nodejs"],
+  "author": "",
+  "license": "MIT"
+}
