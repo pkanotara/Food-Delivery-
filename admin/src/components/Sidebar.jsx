@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { FiPlusCircle, FiList, FiShoppingBag } from 'react-icons/fi';
 import './Sidebar.css';
 
 const Sidebar = () => {
@@ -7,15 +8,15 @@ const Sidebar = () => {
     <div className="sidebar">
       <div className="sidebar-options">
         <NavLink to="/add" className="sidebar-option">
-          <span className="icon">➕</span>
+          <FiPlusCircle className="icon" />
           <p>Add Items</p>
         </NavLink>
         <NavLink to="/list" className="sidebar-option">
-          <span className="icon">📋</span>
+          <FiList className="icon" />
           <p>List Items</p>
         </NavLink>
         <NavLink to="/orders" className="sidebar-option">
-          <span className="icon">📦</span>
+          <FiShoppingBag className="icon" />
           <p>Orders</p>
         </NavLink>
       </div>

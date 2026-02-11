@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { FiPackage, FiMapPin, FiPhone } from 'react-icons/fi';
 import './Orders.css';
 
 const Orders = () => {
@@ -46,12 +47,14 @@ const Orders = () => {
 
   return (
     <div className="order add">
-      <h3>Order Page</h3>
+      <h3>Order Management</h3>
       <div className="order-list">
         {orders.map((order, index) => (
           <div key={index} className="order-item">
-            <div className="order-icon">📦</div>
-            <div>
+            <div className="order-icon">
+              <FiPackage />
+            </div>
+            <div className="order-details">
               <p className="order-item-food">
                 {order.items.map((item, idx) => {
                   if (idx === order.items.length - 1) {
@@ -65,24 +68,32 @@ const Orders = () => {
                 {order.address.firstName + ' ' + order.address.lastName}
               </p>
               <div className="order-item-address">
-                <p>{order.address.street + ','}</p>
-                <p>
-                  {order.address.city +
-                    ', ' +
-                    order.address.state +
-                    ', ' +
-                    order.address.country +
-                    ', ' +
-                    order.address.zip}
-                </p>
+                <FiMapPin />
+                <div>
+                  <p>{order.address.street}</p>
+                  <p>
+                    {order.address.city +
+                      ', ' +
+                      order.address.state +
+                      ', ' +
+                      order.address.country +
+                      ', ' +
+                      order.address.zip}
+                  </p>
+                </div>
               </div>
-              <p className="order-item-phone">{order.address.phone}</p>
+              <p className="order-item-phone">
+                <FiPhone /> {order.address.phone}
+              </p>
             </div>
-            <p>Items: {order.items.length}</p>
-            <p>${order.amount}</p>
+            <div className="order-info">
+              <p className="order-items-count">Items: {order.items.length}</p>
+              <p className="order-amount">${order.amount}</p>
+            </div>
             <select
               onChange={(event) => statusHandler(event, order._id)}
               value={order.status}
+              className="status-select"
             >
               <option value="pending">Pending</option>
               <option value="preparing">Preparing</option>
