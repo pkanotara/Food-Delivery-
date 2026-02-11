@@ -6,7 +6,6 @@ import userRouter from './routes/userRoute.js';
 import foodRouter from './routes/foodRoute.js';
 import cartRouter from './routes/cartRoute.js';
 import orderRouter from './routes/orderRoute.js';
-import { generalLimiter } from './middleware/rateLimiter.js';
 
 // Load environment variables
 dotenv.config();
@@ -18,9 +17,6 @@ const PORT = process.env.PORT || 4000;
 // Middleware
 app.use(express.json());
 app.use(cors());
-
-// Apply general rate limiter to all routes
-app.use(generalLimiter);
 
 // Connect to database
 connectDB();
