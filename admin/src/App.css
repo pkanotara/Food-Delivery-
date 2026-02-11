@@ -1,12 +1,13 @@
 .app-content {
   display: flex;
+  min-height: calc(100vh - 80px);
 }
 
 hr {
   margin: 0;
   border: none;
   height: 1px;
-  background-color: #e2e2e2;
+  background-color: var(--border-color);
 }
 
 @media (max-width: 900px) {
