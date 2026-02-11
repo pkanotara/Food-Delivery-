@@ -1,0 +1,16 @@
+.app-content {
+  display: flex;
+}
+
+hr {
+  margin: 0;
+  border: none;
+  height: 1px;
+  background-color: #e2e2e2;
+}
+
+@media (max-width: 900px) {
+  .app-content {
+    flex-direction: column;
+  }
+}
