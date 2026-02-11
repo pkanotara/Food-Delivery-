@@ -8,16 +8,17 @@ import {
 } from '../controllers/orderController.js';
 import authMiddleware from '../middleware/auth.js';
 import adminMiddleware from '../middleware/admin.js';
+import { apiLimiter } from '../middleware/rateLimiter.js';
 
 const orderRouter = express.Router();
 
-// User routes
-orderRouter.post('/place', authMiddleware, placeOrder);
-orderRouter.post('/verify', verifyOrder);
-orderRouter.get('/user', authMiddleware, getUserOrders);
+// User routes (rate limited)
+orderRouter.post('/place', apiLimiter, authMiddleware, placeOrder);
+orderRouter.post('/verify', apiLimiter, verifyOrder);
+orderRouter.get('/user', apiLimiter, authMiddleware, getUserOrders);
 
-// Admin routes
-orderRouter.get('/all', authMiddleware, adminMiddleware, getAllOrders);
-orderRouter.put('/status/:id', authMiddleware, adminMiddleware, updateOrderStatus);
+// Admin routes (rate limited)
+orderRouter.get('/all', apiLimiter, authMiddleware, adminMiddleware, getAllOrders);
+orderRouter.put('/status/:id', apiLimiter, authMiddleware, adminMiddleware, updateOrderStatus);
 
 export default orderRouter;
