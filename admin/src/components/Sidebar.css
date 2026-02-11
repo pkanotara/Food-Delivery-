@@ -1,61 +1,71 @@
 .sidebar {
   width: 250px;
   min-height: calc(100vh - 84px);
-  border-right: 1px solid #e2e2e2;
-  background-color: #f9f9f9;
+  border-right: 1px solid var(--border-color);
+  background: linear-gradient(180deg, var(--white) 0%, var(--background-color) 100%);
 }
 
 .sidebar-options {
-  padding-top: 50px;
-  padding-left: 20%;
+  padding: 40px 20px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 12px;
 }
 
 .sidebar-option {
   display: flex;
   align-items: center;
-  gap: 12px;
-  border: 1px solid #d3d3d3;
-  border-right: 0;
-  padding: 12px 20px;
-  border-radius: 5px 0 0 5px;
+  gap: 14px;
+  border: 2px solid transparent;
+  padding: 14px 20px;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: 0.3s;
+  transition: var(--transition);
   text-decoration: none;
-  color: #454545;
-  background-color: white;
+  color: var(--text-color);
+  background: var(--white);
+  font-weight: 500;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .sidebar-option:hover {
-  background-color: #fff5f2;
-  border-color: #ff6b35;
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(255, 107, 53, 0.02) 100%);
+  border-color: var(--primary-color);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-sm);
 }
 
 .sidebar-option.active {
-  background-color: #fff5f2;
-  border-color: #ff6b35;
-  color: #ff6b35;
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(255, 107, 53, 0.05) 100%);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  box-shadow: var(--shadow-sm);
 }
 
 .sidebar-option .icon {
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .sidebar-option p {
   margin: 0;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 @media (max-width: 900px) {
   .sidebar {
     width: 100%;
     min-height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
   }
 
   .sidebar-options {
     flex-direction: row;
-    padding: 20px;
+    padding: 16px 20px;
+    overflow-x: auto;
+  }
+
+  .sidebar-option {
+    white-space: nowrap;
   }
 }

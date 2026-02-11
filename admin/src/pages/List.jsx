@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { FiTrash2 } from 'react-icons/fi';
 import './List.css';
 
 const List = () => {
@@ -56,9 +57,9 @@ const List = () => {
             <p>{item.name}</p>
             <p>{item.category}</p>
             <p>${item.price}</p>
-            <p onClick={() => removeFood(item._id)} className="cursor">
-              ❌
-            </p>
+            <button onClick={() => removeFood(item._id)} className="delete-btn">
+              <FiTrash2 />
+            </button>
           </div>
         ))}
       </div>

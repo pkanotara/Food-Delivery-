@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { FiPackage, FiClock } from 'react-icons/fi';
 import { StoreContext } from '../context/StoreContext';
 import './MyOrders.css';
 
@@ -30,35 +31,53 @@ const MyOrders = () => {
     }
   }, [token]);
 
+  const getStatusClass = (status) => {
+    const statusLower = status.toLowerCase();
+    if (statusLower.includes('delivered')) return 'status-delivered';
+    if (statusLower.includes('processing') || statusLower.includes('preparing')) return 'status-processing';
+    if (statusLower.includes('delivery') || statusLower.includes('out')) return 'status-delivery';
+    return 'status-pending';
+  };
+
   return (
     <div className="my-orders">
       <h2>My Orders</h2>
       <div className="container">
-        {data.map((order, index) => (
-          <div key={index} className="my-orders-order">
-            <div className="order-icon">📦</div>
-            <div className="order-info">
-              <p className="order-items">
-                {order.items.map((item, idx) => {
-                  if (idx === order.items.length - 1) {
-                    return item.name + ' x ' + item.quantity;
-                  } else {
-                    return item.name + ' x ' + item.quantity + ', ';
-                  }
-                })}
-              </p>
-              <p className="order-amount">${order.amount}</p>
-              <p>Items: {order.items.length}</p>
-              <p>
-                <span>●</span> <b>{order.status}</b>
-              </p>
-              <p className="order-date">
-                {new Date(order.createdAt).toLocaleDateString()}
-              </p>
-            </div>
-            <button onClick={fetchOrders}>Track Order</button>
+        {data.length === 0 ? (
+          <div className="empty-orders">
+            <FiPackage className="empty-icon" />
+            <h3>No orders yet</h3>
+            <p>Your order history will appear here</p>
           </div>
-        ))}
+        ) : (
+          data.map((order, index) => (
+            <div key={index} className="my-orders-order">
+              <div className="order-icon">
+                <FiPackage />
+              </div>
+              <div className="order-info">
+                <p className="order-items">
+                  {order.items.map((item, idx) => {
+                    if (idx === order.items.length - 1) {
+                      return item.name + ' x ' + item.quantity;
+                    } else {
+                      return item.name + ' x ' + item.quantity + ', ';
+                    }
+                  })}
+                </p>
+                <p className="order-amount">${order.amount}</p>
+                <p className="order-detail">Items: {order.items.length}</p>
+                <div className={`order-status ${getStatusClass(order.status)}`}>
+                  {order.status}
+                </div>
+                <p className="order-date">
+                  <FiClock /> {new Date(order.createdAt).toLocaleDateString()}
+                </p>
+              </div>
+              <button onClick={fetchOrders}>Track Order</button>
+            </div>
+          ))
+        )}
       </div>
     </div>
   );

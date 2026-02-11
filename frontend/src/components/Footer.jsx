@@ -1,4 +1,5 @@
 import React from 'react';
+import { FiFacebook, FiTwitter, FiInstagram } from 'react-icons/fi';
 import './Footer.css';
 
 const Footer = () => {
@@ -13,9 +14,15 @@ const Footer = () => {
             doorstep.
           </p>
           <div className="footer-social-icons">
-            <span>📘</span>
-            <span>🐦</span>
-            <span>📷</span>
+            <a href="#" aria-label="Facebook">
+              <FiFacebook />
+            </a>
+            <a href="#" aria-label="Twitter">
+              <FiTwitter />
+            </a>
+            <a href="#" aria-label="Instagram">
+              <FiInstagram />
+            </a>
           </div>
         </div>
         <div className="footer-content-center">

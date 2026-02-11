@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { FiUploadCloud } from 'react-icons/fi';
 import './Add.css';
 
 const Add = () => {
@@ -64,7 +65,7 @@ const Add = () => {
               <img src={URL.createObjectURL(image)} alt="" />
             ) : (
               <div className="upload-area">
-                <span>📁</span>
+                <FiUploadCloud className="upload-icon" />
                 <p>Click to upload</p>
               </div>
             )}
