@@ -1,42 +1,115 @@
 .app-download {
-  margin: 100px auto;
-  text-align: center;
-  font-size: max(3vw, 20px);
-  font-weight: 500;
+  margin: 80px auto;
+  max-width: 1200px;
+  padding: 0 20px;
 }
 
-.app-download p {
-  margin-bottom: 40px;
+.app-download-content {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #e55a2b 100%);
+  border-radius: var(--radius-lg);
+  padding: 60px 40px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.app-download-content::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+}
+
+.app-download-icon {
+  font-size: 48px;
+  color: var(--white);
+  margin-bottom: 20px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.app-download-title {
+  font-size: max(2.5vw, 24px);
+  font-weight: 700;
+  color: var(--white);
+  margin: 0 0 40px;
+  line-height: 1.4;
 }
 
 .app-download-platforms {
   display: flex;
   justify-content: center;
   gap: 20px;
+  position: relative;
 }
 
 .platform-btn {
-  background-color: #ff6b35;
-  color: white;
-  padding: 15px 30px;
-  border-radius: 10px;
+  background: var(--white);
+  color: var(--primary-color);
+  padding: 16px 32px;
+  border-radius: var(--radius-pill);
   cursor: pointer;
-  transition: 0.3s;
-  font-size: 18px;
+  transition: var(--transition);
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 2px solid transparent;
+}
+
+.platform-btn svg {
+  font-size: 24px;
 }
 
 .platform-btn:hover {
-  background-color: #e55a2b;
-  transform: scale(1.05);
+  background: var(--secondary-color);
+  color: var(--white);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
 @media (max-width: 750px) {
+  .app-download {
+    margin: 60px auto;
+  }
+
+  .app-download-content {
+    padding: 40px 24px;
+  }
+
+  .app-download-icon {
+    font-size: 40px;
+  }
+
+  .app-download-title {
+    font-size: 20px;
+    margin-bottom: 32px;
+  }
+
   .app-download-platforms {
     flex-direction: column;
     align-items: center;
+    gap: 16px;
   }
 
   .platform-btn {
-    width: 80%;
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+    padding: 14px 28px;
   }
 }

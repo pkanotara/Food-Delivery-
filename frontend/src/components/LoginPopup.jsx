@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import axios from 'axios';
+import { FiX } from 'react-icons/fi';
 import { StoreContext } from '../context/StoreContext';
 import './LoginPopup.css';
 
@@ -49,7 +50,7 @@ const LoginPopup = ({ setShowLogin }) => {
         <div className="login-popup-title">
           <h2>{currState}</h2>
           <span onClick={() => setShowLogin(false)} className="close-btn">
-            ✖
+            <FiX />
           </span>
         </div>
         <div className="login-popup-inputs">
