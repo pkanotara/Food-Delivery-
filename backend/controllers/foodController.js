@@ -97,9 +97,11 @@ export const updateFood = async (req, res) => {
     // Update image if new file uploaded
     if (req.file) {
       // Delete old image
-      fs.unlink(`uploads/${food.image}`, (err) => {
-        if (err) console.error('Error deleting old image:', err);
-      });
+      try {
+        fs.unlinkSync(`uploads/${food.image}`);
+      } catch (err) {
+        console.error('Error deleting old image:', err);
+      }
       food.image = req.file.filename;
     }
 
@@ -137,9 +139,11 @@ export const deleteFood = async (req, res) => {
     }
 
     // Delete image file
-    fs.unlink(`uploads/${food.image}`, (err) => {
-      if (err) console.error('Error deleting image:', err);
-    });
+    try {
+      fs.unlinkSync(`uploads/${food.image}`);
+    } catch (err) {
+      console.error('Error deleting image:', err);
+    }
 
     // Delete food item
     await Food.findByIdAndDelete(id);

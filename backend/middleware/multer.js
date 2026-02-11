@@ -1,5 +1,6 @@
 import multer from 'multer';
 import path from 'path';
+import crypto from 'crypto';
 
 // Configure storage for multer
 const storage = multer.diskStorage({
@@ -7,8 +8,9 @@ const storage = multer.diskStorage({
     cb(null, 'uploads/');
   },
   filename: (req, file, cb) => {
-    // Create unique filename with timestamp
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    // Create unique filename with cryptographically secure random bytes
+    const randomBytes = crypto.randomBytes(16).toString('hex');
+    const uniqueSuffix = Date.now() + '-' + randomBytes;
     cb(null, uniqueSuffix + path.extname(file.originalname));
   }
 });

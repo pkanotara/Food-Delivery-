@@ -40,7 +40,7 @@ export const placeOrder = async (req, res) => {
         product_data: {
           name: item.name
         },
-        unit_amount: Math.round(item.price * 100) // Convert to cents
+        unit_amount: Math.floor(item.price * 100) // Convert to cents
       },
       quantity: item.quantity
     }));

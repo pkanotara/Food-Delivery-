@@ -33,8 +33,7 @@ const PlaceOrder = () => {
     let orderItems = [];
     foodList.forEach((item) => {
       if (cartItems[item._id] > 0) {
-        let itemInfo = item;
-        itemInfo['quantity'] = cartItems[item._id];
+        let itemInfo = { ...item, quantity: cartItems[item._id] };
         orderItems.push(itemInfo);
       }
     });
@@ -68,7 +67,7 @@ const PlaceOrder = () => {
     } else if (getTotalCartAmount() === 0) {
       navigate('/cart');
     }
-  }, [token]);
+  }, [token, navigate, getTotalCartAmount]);
 
   return (
     <form onSubmit={placeOrder} className="place-order">

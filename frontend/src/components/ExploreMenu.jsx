@@ -4,7 +4,7 @@ import './ExploreMenu.css';
 const menuList = [
   { menu_name: 'Salad', menu_image: '🥗' },
   { menu_name: 'Rolls', menu_image: '🌯' },
-  { menu_name: 'Deserts', menu_image: '🍰' },
+  { menu_name: 'Desserts', menu_image: '🍰' },
   { menu_name: 'Sandwich', menu_image: '🥪' },
   { menu_name: 'Cake', menu_image: '🎂' },
   { menu_name: 'Pure Veg', menu_image: '🥬' },
